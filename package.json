@@ -10,6 +10,7 @@
     "@material-ui/lab": "^4.0.0-alpha.60",
     "@slate-editor/image-plugin": "^5.1.1",
     "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.8",
     "emotion": "^11.0.0",
     "graphql": "^15.5.1",
     "jwt-decode": "^3.1.2",
