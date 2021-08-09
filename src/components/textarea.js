@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import isHotkey from 'is-hotkey';
-import { Slate, Editable, useSlateStatic, useSelected, useFocused, withReact, useSlate } from 'slate-react';
-import { createEditor, Editor, Transforms, Descendant } from 'slate';
+import { Slate, Editable, withReact, useSlate } from 'slate-react';
+import { createEditor, Editor, Transforms } from 'slate';
 import { withHistory } from 'slate-history';
 
 import Box from '@material-ui/core/Box';
