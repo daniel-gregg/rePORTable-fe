@@ -1,8 +1,9 @@
 import React, { useCallback, useMemo } from 'react';
 import isHotkey from 'is-hotkey';
 import { Slate, Editable, useSlateStatic, useSelected, useFocused, withReact, useSlate } from 'slate-react';
-import { createEditor, Editor, Transforms } from 'slate';
+import { createEditor, Editor, Transforms, Descendant } from 'slate';
 import { withHistory } from 'slate-history';
+
 import Box from '@material-ui/core/Box';
 import FormatBoldIcon from '@material-ui/icons/FormatBold';
 import FormatItalicIcon from '@material-ui/icons/FormatItalic';
@@ -93,7 +94,7 @@ const TextArea = ({ value, setValue }) => {
   );
 };
 
-export const Element = ({ attributes, children, element }) => {
+const Element = ({ attributes, children, element }) => {
   switch (element.type) {
     case 'block-quote':
       return <blockquote {...attributes}>{children}</blockquote>;
@@ -108,13 +109,13 @@ export const Element = ({ attributes, children, element }) => {
     case 'numbered-list':
       return <ol {...attributes}>{children}</ol>;
     case 'image':
-      return <img src="https://via.placeholder.com/150" alt="placeholder"></img>;
+      return renderImage();
     default:
       return <p {...attributes}>{children}</p>;
   }
 };
 
-export const Leaf = ({ attributes, children, leaf }) => {
+const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {
     children = <strong>{children}</strong>;
   }
@@ -132,6 +133,12 @@ export const Leaf = ({ attributes, children, leaf }) => {
   }
 
   return <span {...attributes}>{children}</span>;
+};
+
+const renderImage = () => {
+  console.log('rendering an image!');
+  //This is a placeholder. Need to have an image uploader function that returns a URL for an image
+  return <img src="https://stevensegallery.com/200/300" alt="" />;
 };
 
 const BlockButton = ({ format, children }) => {
