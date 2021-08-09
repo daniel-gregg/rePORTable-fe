@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import { StoreProvider } from './state/GlobalState';
 import Profile from './pages/Profile';
 import SlateDocument from './pages/SlateDocument';
+import tiptapDocument from './pages/tiptapDocument';
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_BASEURL + '/graphql',
@@ -43,7 +44,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/profile" component={Profile} />
-              <Route exact path="/document" component={SlateDocument} />
+              <Route exact path="/tiptapdoc" component={tiptapDocument} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>
