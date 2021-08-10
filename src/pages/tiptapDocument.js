@@ -5,10 +5,11 @@ import MenuBar from '../components/MenuBar';
 
 import Image from '@tiptap/extension-image';
 import Dropcursor from '@tiptap/extension-dropcursor';
+import Underline from '@tiptap/extension-underline';
 
 const Tiptap = () => {
   const editor = useEditor({
-    extensions: [StarterKit, Image, Dropcursor],
+    extensions: [StarterKit, Image, Dropcursor, Underline],
     content: '<p>Hello World! 🌎️</p>',
     editorProps: {
       attributes: {

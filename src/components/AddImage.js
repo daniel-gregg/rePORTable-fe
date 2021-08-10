@@ -6,3 +6,5 @@ const addImage = () => {
     editor.chain().focus().setImage({ src: url }).run();
   }
 };
+
+export default addImage;

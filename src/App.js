@@ -10,8 +10,9 @@ import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import { StoreProvider } from './state/GlobalState';
 import Profile from './pages/Profile';
-import SlateDocument from './pages/SlateDocument';
 import tiptapDocument from './pages/tiptapDocument';
+
+import './index.css';
 
 const httpLink = createHttpLink({
   uri: process.env.REACT_APP_BASEURL + '/graphql',

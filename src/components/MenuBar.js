@@ -39,16 +39,16 @@ const MenuBar = ({ editor }) => {
         <FormatItalicIcon />
       </button>
       <button
+        onClick={() => editor.chain().focus().toggleUnderline().run()}
+        className={`menu-item ${editor.isActive('underline') ? 'is-active' : ''}`}
+      >
+        <FormatUnderlinedIcon />
+      </button>
+      <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={`menu-item ${editor.isActive('strike') ? 'is-active' : ''}`}
       >
         <FormatStrikethrough />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCode().run()}
-        className={`menu-item ${editor.isActive('code') ? 'is-active' : ''}`}
-      >
-        <CodeIcon />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
