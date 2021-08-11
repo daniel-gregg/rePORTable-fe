@@ -62,8 +62,8 @@ function Signup(props) {
                 First name
               </label>
               <input
-                id="first_name"
-                name="first_name"
+                id="firstName"
+                name="firstName"
                 class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                 type="text"
                 onChange={handleChange}
@@ -74,8 +74,8 @@ function Signup(props) {
                 Last name
               </label>
               <input
-                id="last_name"
-                name="last_name"
+                id="lastName"
+                name="lastName"
                 class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                 type="text"
                 onChange={handleChange}
@@ -99,6 +99,7 @@ function Signup(props) {
               </label>
               <input
                 id="email"
+                name="email"
                 class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                 type="email"
                 onChange={handleChange}
@@ -110,6 +111,7 @@ function Signup(props) {
               </label>
               <input
                 id="password"
+                name="password"
                 class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
                 type="password"
                 onChange={handleChange}

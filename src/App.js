@@ -9,8 +9,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import { StoreProvider } from './state/GlobalState';
-import Profile from './pages/Profile';
-import tiptapDocument from './pages/tiptapDocument';
+import Dashboard from './pages/Dashboard';
+import TipTap from './pages/TipTap';
 
 import './index.css';
 
@@ -44,8 +44,8 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/tiptapdoc" component={tiptapDocument} />
+              <Route exact path="/dashboard" component={Dashboard} />
+              <Route exact path="/new" component={TipTap} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>
