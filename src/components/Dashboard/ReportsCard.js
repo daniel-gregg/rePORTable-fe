@@ -1,13 +1,16 @@
-const reportsCard = (report) => {
+import { Link } from 'react-router-dom';
+import Parser from 'html-react-parser';
+
+const reportsCard = ({ report }) => {
   //do some stuff with report here
   console.log(report);
   return (
-    <div class="rounded overflow-hidden shadow-lg ">
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{report.report.title}</div>
-        <p class="text-gray-700 text-base">{report.report.content}</p>
+    <Link to={`/document/${report._id}`}>
+      <div className="rounded overflow-hidden shadow-lg p-6">
+        <p className="font-bold text-blue-900 text-center font-extrabold text-2xl">{Parser(report.title)}</p>
+        <p className="text-gray-500 text-sm text-center">{Parser(report.synopsis)}</p>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -6,24 +6,17 @@ import CodeIcon from '@material-ui/icons/Code';
 import LooksOneIcon from '@material-ui/icons/LooksOne';
 import LooksTwoIcon from '@material-ui/icons/LooksTwo';
 import LooksThreeIcon from '@material-ui/icons/Looks3';
-import LooksFourIcon from '@material-ui/icons/Looks4';
-import LooksFiveIcon from '@material-ui/icons/Looks5';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import FormatListNumberedIcon from '@material-ui/icons/FormatListNumbered';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
-import RemoveIcon from '@material-ui/icons/Remove';
 import ImageIcon from '@material-ui/icons/Image';
 import KeyboardReturnIcon from '@material-ui/icons/KeyboardReturn';
 import UndoIcon from '@material-ui/icons/Undo';
 import RedoIcon from '@material-ui/icons/Redo';
-import FormatAlignCenterIcon from '@material-ui/icons/FormatAlignCenter';
-import FormatAlignLeftIcon from '@material-ui/icons/FormatAlignLeft';
-import FormatAlignRightIcon from '@material-ui/icons/FormatAlignRight';
-import FormatAlignJustifyIcon from '@material-ui/icons/FormatAlignJustify';
 
-import addImage from './AddImage';
+import addImage from '../AddImage';
 
-const MenuBar = ({ editor }) => {
+const BioMenuBar = ({ editor }) => {
   if (!editor) {
     return null;
   }
@@ -76,42 +69,6 @@ const MenuBar = ({ editor }) => {
         onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
         className={`menu-item ${editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}`}
       >
-        <LooksFourIcon />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        className={`menu-item ${editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}`}
-      >
-        <LooksFiveIcon />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setTextAlign('left').run()}
-        className={`menu-item ${editor.isActive('alignLeft') ? 'is-active' : ''}`}
-      >
-        <FormatAlignLeftIcon />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setTextAlign('center').run()}
-        className={`menu-item ${editor.isActive('alignCenter') ? 'is-active' : ''}`}
-      >
-        <FormatAlignCenterIcon />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setTextAlign('right').run()}
-        className={`menu-item ${editor.isActive('alignRight') ? 'is-active' : ''}`}
-      >
-        <FormatAlignRightIcon />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setTextAlign('justify').run()}
-        className={`menu-item ${editor.isActive('alignJustify') ? 'is-active' : ''}`}
-      >
-        <FormatAlignJustifyIcon />
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={`menu-item ${editor.isActive('bulletList') ? 'is-active' : ''}`}
-      >
         <FormatListBulletedIcon />
       </button>
       <button
@@ -136,12 +93,6 @@ const MenuBar = ({ editor }) => {
         <ImageIcon />
       </button>
       <button
-        onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        className={`menu-item ${editor.isActive('divider') ? 'is-active' : ''}`}
-      >
-        <RemoveIcon />
-      </button>
-      <button
         onClick={() => editor.chain().focus().setHardBreak().run()}
         className={`menu-item ${editor.isActive('hardbreak') ? 'is-active' : ''}`}
       >
@@ -163,4 +114,4 @@ const MenuBar = ({ editor }) => {
   );
 };
 
-export default MenuBar;
+export default BioMenuBar;

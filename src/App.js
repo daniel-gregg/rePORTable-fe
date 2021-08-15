@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import { StoreProvider } from './state/GlobalState';
 import Dashboard from './pages/Dashboard';
 import TipTap from './pages/TipTap';
+import Document from './pages/Document';
 
 import './index.css';
 
@@ -44,8 +45,9 @@ function App() {
               <Route exact path="/" component={Home} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/new" component={TipTap} />
+              <Route exact path="/dashboard" component={Dashboard} client={client} />
+              <Route exact path="/create" component={TipTap} />
+              <Route path="/document/:reportId" component={Document} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>

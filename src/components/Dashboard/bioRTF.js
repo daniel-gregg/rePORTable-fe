@@ -1,24 +1,37 @@
+import { useMutation } from '@apollo/client';
+
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import './biostyles.scss';
 import BioMenuBar from './BioMenuBar';
+import { debounce } from 'debounce';
 
 import Image from '@tiptap/extension-image';
 import Dropcursor from '@tiptap/extension-dropcursor';
 import Underline from '@tiptap/extension-underline';
+import { UPDATE_BIO } from '../../api/mutations';
+import { QUERY_USER } from '../../api/queries';
+import { useQuery } from '@apollo/client';
 
-const Tiptap = () => {
+import './biostyles.scss';
+
+let debounced;
+
+const Bio = () => {
+  const { data, loading } = useQuery(QUERY_USER);
+  const user = data ? data.user : {};
+  console.log(user);
+  const [updateBio] = useMutation(UPDATE_BIO);
   const editor = useEditor({
     extensions: [StarterKit, Image, Dropcursor, Underline],
-    content: '<p>Your Bio Here!</p>',
+    content: JSON.parse(user.bio),
     onUpdate() {
-      const json = this.getJSON();
-      console.log(json);
-      // send the content to an API here
-      //const { json } = useMutation(UPDATE_CONTENT, {
-      // pass URL parameter
-      //  variables: { _id: profileId },
-      //});
+      const update = () => {
+        const json = this.getJSON();
+        updateBio({ variables: { _id: user._id, bio: JSON.stringify(json) } });
+      };
+      debounced?.clear();
+      debounced = debounce(() => update(), 4000);
+      debounced();
     },
     editorProps: {
       attributes: {
@@ -28,9 +41,13 @@ const Tiptap = () => {
     //can add props here to try to kill the formatting of the focused editor.
   });
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="editorContainer">
-      <div className="editor">
+    <div className="bioEditorContainer">
+      <div className="bioEditor">
         <BioMenuBar editor={editor} />
         <EditorContent editor={editor} />
       </div>
@@ -38,4 +55,4 @@ const Tiptap = () => {
   );
 };
 
-export default Tiptap;
+export default Bio;

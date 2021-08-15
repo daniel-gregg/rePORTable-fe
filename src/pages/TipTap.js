@@ -10,7 +10,7 @@ import Underline from '@tiptap/extension-underline';
 import { useMutation } from '@apollo/client';
 import { UPDATE_CONTENT } from '../api/mutations';
 
-const TipTap = (props) => {
+const TipTapTest = (props) => {
   const editor = useEditor({
     extensions: [StarterKit, Image, Dropcursor, Underline],
     content: '<p>Hello World! 🌎️</p>',
@@ -19,11 +19,8 @@ const TipTap = (props) => {
       console.log(json);
       // send the content to an API here
       //const [updateReport, { data, loading, error }] = useMutation(UPDATE_CONTENT, {
-      //variables: {_id: reportId}
+      //variables: {_id: reportId, content: content}
       //})
-      // pass URL parameter
-      //  variables: { _id: profileId },
-      //});
     },
     editorProps: {
       attributes: {
@@ -43,4 +40,4 @@ const TipTap = (props) => {
   );
 };
 
-export default TipTap;
+export default TipTapTest;
