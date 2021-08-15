@@ -86,6 +86,14 @@ export const UPDATE_BIO = gql`
   }
 `;
 
+export const UPDATE_TEAM = gql`
+  mutation updateTeam($member: String) {
+    updateTeam(member: $member) {
+      _id
+    }
+  }
+`;
+
 export const ADD_REPORT = gql`
   mutation addReport(
     $title: String!

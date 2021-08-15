@@ -67,7 +67,7 @@ const Dashboard = (client) => {
         </div>
       </div>
 
-      <TeamSearch />
+      <TeamSearch profile={profile} />
 
       <div className="flex justify-center pt-20 w-full">
         <p className="mt-4 max-w-4xl text-xl font-bold text-gray-500 lg:mx-auto">Your Reports</p>
