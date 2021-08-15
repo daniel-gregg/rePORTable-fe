@@ -86,33 +86,45 @@ export const UPDATE_BIO = gql`
   }
 `;
 
+export const REMOVE_TEAM_MEMBER = gql`
+  mutation removeTeamMember($id: String) {
+    removeTeamMember(id: $id) {
+      _id
+      title
+    }
+  }
+`;
+
+export const ADD_CONTRIBUTOR = gql`
+  mutation addContributor($reportId: String, $personId: String) {
+    addContributor(reportId: $reportId, personId: $personId) {
+      _id
+      title
+    }
+  }
+`;
+
+export const REMOVE_CONTRIBUTOR = gql`
+  mutation removeContributor($reportId: String, $personId: String) {
+    removeContributor(reportId: $reportId, personId: $personId) {
+      _id
+      title
+    }
+  }
+`;
+
 export const UPDATE_TEAM = gql`
-  mutation updateTeam($member: String) {
-    updateTeam(member: $member) {
+  mutation updateTeam($memberId: String) {
+    updateTeam(memberId: $memberId) {
       _id
     }
   }
 `;
 
 export const ADD_REPORT = gql`
-  mutation addReport(
-    $title: String!
-    $ownerId: String!
-    $synopsis: String!
-    $contributors: [String!]!
-    $content: String!
-  ) {
-    addReport(
-      title: $title
-      ownerId: $ownerId
-      synopsis: $synopsis
-      contributors: $contributors
-      content: $content
-      state: "Draft"
-    ) {
-      report {
-        _id
-      }
+  mutation addReport($ownerId: String!) {
+    addReport(ownerId: $ownerId, state: "Draft") {
+      _id
     }
   }
 `;

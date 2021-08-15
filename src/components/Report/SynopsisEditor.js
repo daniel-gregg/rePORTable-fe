@@ -12,12 +12,12 @@ const SynopsisEditor = ({ report }) => {
   const [updateSynopsis] = useMutation(UPDATE_SYNOPSIS);
   const editor = useEditor({
     extensions: [StarterKit, Paragraph],
-    content: report.singleReport.synopsis,
+    content: report.synopsis,
     onUpdate() {
       const update = () => {
         const html = this.getHTML();
         console.log(html);
-        updateSynopsis({ variables: { id: report.singleReport._id, synopsis: html } });
+        updateSynopsis({ variables: { id: report._id, synopsis: html } });
       };
       debounced?.clear();
       debounced = debounce(() => update(), 4000);

@@ -40,10 +40,12 @@ export const QUERY_REPORT = gql`
       title
       content
       contributors {
+        designation
         firstName
         lastName
       }
       owner {
+        designation
         firstName
         lastName
       }
@@ -54,12 +56,35 @@ export const QUERY_REPORT = gql`
   }
 `;
 
+export const QUERY_NO_CONTENT = gql`
+  query singlePartial($id: ID!) {
+    singlePartial(id: $id) {
+      _id
+      title
+      state
+      synopsis
+      contributors {
+        designation
+        firstName
+        lastName
+        _id
+      }
+      owner {
+        _id
+        firstName
+        lastName
+      }
+    }
+  }
+`;
+
 export const QUERY_USER_REPORTS = gql`
   {
     userReports {
       _id
       contributors {
         _id
+        designation
         firstName
         lastName
       }

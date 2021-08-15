@@ -9,10 +9,10 @@ const TitleEditor = ({ report }) => {
   const [updateTitle] = useMutation(UPDATE_TITLE);
   const editor = useEditor({
     extensions: [StarterKit, Paragraph],
-    content: report.singleReport.title,
+    content: report.title,
     onUpdate() {
       const html = this.getHTML();
-      updateTitle({ variables: { id: report.singleReport._id, title: html } });
+      updateTitle({ variables: { id: report._id, title: html } });
     },
     editorProps: {
       attributes: {

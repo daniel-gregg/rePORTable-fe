@@ -12,6 +12,7 @@ import { StoreProvider } from './state/GlobalState';
 import Dashboard from './pages/Dashboard';
 import TipTap from './pages/TipTap';
 import Document from './pages/Document';
+import ReportDashboard from './pages/ReportDashboard';
 
 import './index.css';
 
@@ -46,8 +47,9 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/dashboard" component={Dashboard} client={client} />
-              <Route exact path="/create" component={TipTap} />
+              <Route exact path="/create" component={ReportDashboard} />
               <Route path="/document/:reportId" component={Document} />
+              <Route path="/reportdashboard/:reportId" component={ReportDashboard} />
               <Route component={NoMatch} />
             </Switch>
           </StoreProvider>

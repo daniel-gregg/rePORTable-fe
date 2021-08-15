@@ -3,6 +3,7 @@ import '../components/styles.scss';
 
 import { QUERY_REPORT } from '../api/queries';
 import { useQuery } from '@apollo/client';
+import Parser from 'html-react-parser';
 
 import TitleEditor from '../components/Report/TitleEditor';
 import SynopsisEditor from '../components/Report/SynopsisEditor';
@@ -34,16 +35,11 @@ const TipTap = () => {
   return (
     <div>
       <div>
-        <h2 className="sectionHeader">Title</h2>
-        <TitleEditor report={data} />
-      </div>
-      <div>
-        <h2 className="sectionHeader">Synopsis</h2>
-        <SynopsisEditor report={data} />
+        <h1 className="sectionHeader">{Parser(data.singleReport.title)}</h1>
       </div>
       <div>
         <h2 className="sectionHeader">Content</h2>
-        <ContentEditor report={data} />
+        <ContentEditor report={data.singleReport} />
       </div>
     </div>
   );

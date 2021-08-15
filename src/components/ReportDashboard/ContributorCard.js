@@ -1,16 +1,20 @@
 import { useMutation } from '@apollo/client';
-import { REMOVE_TEAM_MEMBER } from '../../api/mutations';
+import { REMOVE_CONTRIBUTOR } from '../../api/mutations';
 
 import { Link } from 'react-router-dom';
+// Import the `useParams()` hook
+import { useParams } from 'react-router-dom';
 
-const TeamCard = (member) => {
+const ContributorCard = (member) => {
   //render team members as a card
   console.log(member);
-  const [removeTeamMember] = useMutation(REMOVE_TEAM_MEMBER);
+  const [removeContributor] = useMutation(REMOVE_CONTRIBUTOR);
+
+  const { reportId } = useParams(); //this can be used to add to the add/remove contributors mutations
 
   const deleteContributor = () => {
     console.log(member.member._id);
-    removeTeamMember({ variables: { id: member.member._id } });
+    removeContributor({ variables: { reportId: reportId, personId: member.member._id } });
     // eslint-disable-next-line no-unused-expressions
     //Delete the contributor
     //console.log(id);
@@ -33,4 +37,4 @@ const TeamCard = (member) => {
   );
 };
 
-export default TeamCard;
+export default ContributorCard;

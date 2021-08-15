@@ -25,11 +25,11 @@ const ContentEditor = ({ report }) => {
         types: ['heading', 'paragraph', 'image'],
       }),
     ],
-    content: JSON.parse(report.singleReport.content),
+    content: JSON.parse(report.content),
     onUpdate() {
       const update = () => {
         const json = this.getJSON();
-        updateContent({ variables: { id: report.singleReport._id, content: JSON.stringify(json) } });
+        updateContent({ variables: { id: report._id, content: JSON.stringify(json) } });
       };
       debounced?.clear();
       debounced = debounce(() => update(), 4000);

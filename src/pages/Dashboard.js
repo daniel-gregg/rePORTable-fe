@@ -2,6 +2,7 @@ import { QUERY_USER, QUERY_USER_REPORTS, QUERY_ALL_USERS } from '../api/queries'
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useMutation } from '@apollo/client';
 
 import BioRtf from '../components/Dashboard/bioRTF';
 import TeamCard from '../components/Dashboard/TeamCard';
@@ -9,6 +10,7 @@ import ReportsCards from '../components/Dashboard/ReportsCard';
 import TeamSearch from '../components/Dashboard/TeamSearch';
 
 import '../components/Dashboard/biostyles.scss';
+import { ADD_REPORT } from '../api/mutations';
 
 //import { useMutation } from '@apollo/client';
 //import { UPDATE_PROFILE } from '../api/mutations';
@@ -18,6 +20,7 @@ import '../components/Dashboard/biostyles.scss';
 
 const Dashboard = (client) => {
   //get user details first - to fill bio, etc. fields
+  //need to add a onchange hook to capture team updates.
   const { data, loading } = useQuery(QUERY_USER);
   const profile = data ? data.user : {};
 
@@ -30,6 +33,13 @@ const Dashboard = (client) => {
   if (response) {
     reports = response.userReports;
   }
+
+  const [createNewReport] = useMutation(ADD_REPORT);
+  const onCreateNew = async () => {
+    const mutationResponse = await createNewReport({
+      variables: { ownerId: data.user._id },
+    });
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -84,7 +94,10 @@ const Dashboard = (client) => {
       <div className="flex justify-center h-24">
         <div className="lg:text-center">
           <Link to="/create">
-            <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            <button
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+              onClick={onCreateNew()}
+            >
               <span>Add a new Report</span>
             </button>
           </Link>
