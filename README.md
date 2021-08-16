@@ -1,70 +1,85 @@
-# Getting Started with Create React App
+# rePORTable: An rich-text reporting application for collaborative reporting
+rePORTable is a rich-text reporting application. It is built on a React framework with core rich-text creation and rendering functionality coming from TipTap (https://www.tiptap.dev/). 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A working demo of the application can be viewed at:
+https://6119fe33835c8e0008fcc77e--reportable.netlify.app/#/
 
-## Available Scripts
+## Author
+github.com/daniel-gregg
 
-In the project directory, you can run:
+## Motivation
+rePORTable is motivated by the unique problems facing the creation of lengthy, complex scientific/academic reports. The core issues faced in this situation are:
+- Potentially large numbers of collaborators that can create version control and report integrity issues
+- The need for reporting/engagement activities before the final report is completed
+- The lack of integration between current approaches to reporting (pdf/text documents held on local computers) and current approaches to consumption of information (through dynamic, beautiful websites). 
 
-### `yarn start`
+In addition, there is potential to improve the efficiency and impact of reporting by taking advantage of modern digital technologies. rePORTable is a foray into this realm: A test-run of what might be possible with modern online rich-text applications. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Description
+rePORTable v0.1 is a simple document creation application. It allows:
+- The creation of a user profile
+- Adding other users to your team
+- Creating new 'reports' that comprise a title, synopsis, and content section and allow multiple authors
+- Adding contributors from your team to a report to allow them also to edit the report
+- Removing contributors from your report and users from your team
+- Removing reports from your record
+- Viewing and updating your bio
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+rePORTable is a MERN (Mongo-Express-React-Node) framework application with a relational database powered by the Mongoose (npm) framework. 
 
-### `yarn test`
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Vision](#vision)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
+- You must have Node installed on your computer. See here https://nodejs.org/en/download/. 
+- Clone the github repositories for the front end and back end:
+  - https://github.com/daniel-gregg/rePORTable-fe
+  - https://github.com/daniel-gregg/rePORTable-be
+- Initialise and connect your DB: look at the .env.example file in both the front end and back end repositories for guidance. 
+- npm must first be initialised using 'npm init' in your working directory
+- dependencies can then be installed using 'npm install PACKAGE' where 'PACKAGE' refers to the relevant dependency. 
+- When ready start the back end using 'npm run watch' on your local machine
+- When ready start the front end using 'npm run start' on your local machine
 
-### `yarn build`
+### Dependencies include:
+- mongoose
+- react
+- dotenv
+- and more: see package.json for the full list
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Set up your local environment
+A .envexample file is included in the github repository - use this as a guide if you wish to install on your local computer by replacing it with your own .env file. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
+You must sign up to be able to use rePORTable. 
+Once signed up you can create reports, add other users to your team, add content to your reports, and undertake other actions associated with managing your team/contributors/reports
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Features
+The application currently uses TipTap to both generate and render rich text. Target near-term features include:
+- Rendering reports to HTML and LaTeX
+- Providing for direct linkages to established CMS platforms and/or integrating those into rePORTable directly
+- Invite new users through an email invite approach
+- Allow invited team members to confirm/reject a team invitation
+- Ensure only report 'owners' have administrative priveledges (add/remove contributors, delete report)
 
-### `yarn eject`
+## Vision
+The vision for rePORTable is an application that allows:
+- real-time collaboration
+- finely-detailed permissioning
+- collaboration through messaging and commenting
+- rapid and effect publishing of documents/partial documents to CMS platforms
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+In addition, there may be potential to establish rePORTable as a centralised market place for writing services allowing:
+- customers to procure targeted writing expertise
+- customers to review prospective writing services providers based on their key areas of expertise, reviews, CV, and writing samples
+- writers to sell writing services, with a focus on technical writing capability
+- customers and writers to be able to review potential providers/clients respectively prior to services engagement
+- documents to be guaranteed 'original' using integrations with plagiarism checking software and recording of materials submitted by writers over time
+- secure document tracking and contracting through the use of a Merkle Tree hasing implementation to ensure security of contracting and payments for writing services
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Screenshots
+Home screen:
+![homescreen view](./public/homepage.png?raw=true "Homescreen view")
