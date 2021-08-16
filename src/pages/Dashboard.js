@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Redirect } from 'react-router-dom';
 
 import BioRtf from '../components/Dashboard/bioRTF';
 import TeamCard from '../components/Dashboard/TeamCard';
@@ -11,6 +12,7 @@ import TeamSearch from '../components/Dashboard/TeamSearch';
 
 import '../components/Dashboard/biostyles.scss';
 import { ADD_REPORT } from '../api/mutations';
+import { createNew } from 'typescript';
 
 //import { useMutation } from '@apollo/client';
 //import { UPDATE_PROFILE } from '../api/mutations';
@@ -19,6 +21,9 @@ import { ADD_REPORT } from '../api/mutations';
 //import { useParams } from 'react-router-dom';
 
 const Dashboard = (client) => {
+  //set redirect state to false
+  let redirectStateCreate = false;
+
   //get user details first - to fill bio, etc. fields
   //need to add a onchange hook to capture team updates.
   const { data, loading } = useQuery(QUERY_USER);
@@ -36,9 +41,26 @@ const Dashboard = (client) => {
 
   const [createNewReport] = useMutation(ADD_REPORT);
   const onCreateNew = async () => {
-    const mutationResponse = await createNewReport({
-      variables: { ownerId: data.user._id },
-    });
+    redirectStateCreate = true;
+    await createNew();
+  };
+
+  const createNew = async () => {
+    console.log(redirectStateCreate);
+    if (redirectStateCreate) {
+      const mutationResponse = await createNewReport({
+        variables: { ownerId: data.user._id },
+      });
+
+      console.log(mutationResponse);
+      console.log(mutationResponse.data.addReport);
+
+      const newReport = mutationResponse.data.addReport;
+      console.log(newReport);
+
+      //then fill the redirect!
+      return <Redirect to={`/create/${newReport._id}`} />;
+    }
   };
 
   if (loading) {
@@ -93,14 +115,14 @@ const Dashboard = (client) => {
 
       <div className="flex justify-center h-24">
         <div className="lg:text-center">
-          <Link to="/create">
-            <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
-              onClick={onCreateNew()}
-            >
-              <span>Add a new Report</span>
-            </button>
-          </Link>
+          {createNew}
+          <button
+            type="submit"
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+            onClick={() => onCreateNew()}
+          >
+            <span>Add a new Report</span>
+          </button>
         </div>
       </div>
     </div>

@@ -20,7 +20,7 @@ import { useParams } from 'react-router-dom';
 
 // need a 'get' function that get's the target report to allow rendering in the 'content' section
 
-const ReportDashboard = () => {
+const CreateDashboard = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { reportId } = useParams();
   const { loading, error, data } = useQuery(QUERY_NO_CONTENT, {
@@ -34,6 +34,8 @@ const ReportDashboard = () => {
   }
 
   let report = data.singlePartial;
+
+  //Need to add in a 'cancel' button that deletes the report instance from the db (abort create report)
 
   return (
     <div>
@@ -59,11 +61,15 @@ const ReportDashboard = () => {
 
       <ContributorSearch reportId={report._id} />
 
-      <Link to={`/document/${report._id}`}>
-        <div className="floatingButton">Edit</div>
-      </Link>
+      <div className="flex justify-center w-full">
+        <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
+          <Link to={`/document/${report._id}`}>
+            <div className="floatingButton">Edit</div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ReportDashboard;
+export default CreateDashboard;

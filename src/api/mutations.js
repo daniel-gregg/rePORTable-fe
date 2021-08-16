@@ -16,7 +16,6 @@ export const ADD_USER = gql`
     $firstName: String!
     $lastName: String!
     $designation: String!
-    $bio: String
     $email: String!
     $password: String!
   ) {
@@ -24,7 +23,7 @@ export const ADD_USER = gql`
       firstName: $firstName
       lastName: $lastName
       designation: $designation
-      bio: $bio
+      bio: "<p></p>"
       email: $email
       password: $password
     ) {
@@ -90,7 +89,7 @@ export const REMOVE_TEAM_MEMBER = gql`
   mutation removeTeamMember($id: String) {
     removeTeamMember(id: $id) {
       _id
-      title
+      firstName
     }
   }
 `;

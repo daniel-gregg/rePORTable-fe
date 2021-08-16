@@ -10,7 +10,6 @@ import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import { StoreProvider } from './state/GlobalState';
 import Dashboard from './pages/Dashboard';
-import TipTap from './pages/TipTap';
 import Document from './pages/Document';
 import ReportDashboard from './pages/ReportDashboard';
 
@@ -47,7 +46,7 @@ function App() {
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/dashboard" component={Dashboard} client={client} />
-              <Route exact path="/create" component={ReportDashboard} />
+              <Route exact path="/create/:reportId" component={ReportDashboard} />
               <Route path="/document/:reportId" component={Document} />
               <Route path="/reportdashboard/:reportId" component={ReportDashboard} />
               <Route component={NoMatch} />

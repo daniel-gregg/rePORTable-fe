@@ -11,7 +11,6 @@ function Signup(props) {
     designation: '',
     firstName: '',
     lastName: '',
-    bio: '',
   });
   const [addUser] = useMutation(ADD_USER);
 
@@ -77,18 +76,6 @@ function Signup(props) {
                 id="lastName"
                 name="lastName"
                 class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-3 px-3 leading-tight focus:outline-none"
-                type="text"
-                onChange={handleChange}
-              ></input>
-            </div>
-            <div class="w-full md:w-full px-3 mb-6">
-              <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="Password">
-                Bio
-              </label>
-              <input
-                id="bio"
-                name="bio"
-                class="appearance-none block w-full bg-white text-gray-900 font-medium border border-gray-400 rounded-lg py-24 px-3 leading-tight focus:outline-none"
                 type="text"
                 onChange={handleChange}
               ></input>
