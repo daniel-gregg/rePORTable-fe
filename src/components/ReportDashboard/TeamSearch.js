@@ -71,6 +71,7 @@ const TeamSearch = () => {
     const mutationResponse = await updateTeam({
       variables: { memberId },
     });
+    window.location.reload();
   };
 
   return (

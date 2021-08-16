@@ -1,7 +1,6 @@
 import { QUERY_USER, QUERY_USER_REPORTS } from '../api/queries';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
-import { Redirect } from 'react-router-dom';
 
 import BioRtf from '../components/Dashboard/bioRTF';
 import TeamCard from '../components/Dashboard/TeamCard';
@@ -18,9 +17,6 @@ import { ADD_REPORT } from '../api/mutations';
 //import { useParams } from 'react-router-dom';
 
 const Dashboard = (client) => {
-  //set redirect state to false
-  let redirectStateCreate = false;
-
   //get user details first - to fill bio, etc. fields
   //need to add a onchange hook to capture team updates.
   const { data, loading } = useQuery(QUERY_USER);
@@ -38,26 +34,21 @@ const Dashboard = (client) => {
 
   const [createNewReport] = useMutation(ADD_REPORT);
   const onCreateNew = async () => {
-    redirectStateCreate = true;
     await createNew();
   };
 
   const createNew = async () => {
-    console.log(redirectStateCreate);
-    if (redirectStateCreate) {
-      const mutationResponse = await createNewReport({
-        variables: { ownerId: data.user._id },
-      });
+    const mutationResponse = await createNewReport({
+      variables: { owner: data.user._id },
+    });
 
-      console.log(mutationResponse);
-      console.log(mutationResponse.data.addReport);
+    console.log(mutationResponse);
+    console.log(mutationResponse.data.addReport);
 
-      const newReport = mutationResponse.data.addReport;
-      console.log(newReport);
+    const newReport = mutationResponse.data.addReport;
+    console.log(newReport);
 
-      //then fill the redirect!
-      return <Redirect to={`/create/${newReport._id}`} />;
-    }
+    window.location.assign(`#/create/${newReport._id}`);
   };
 
   if (loading) {
@@ -84,8 +75,8 @@ const Dashboard = (client) => {
 
       <BioRtf profile={profile} />
 
-      <div className="flex pt-10 w-full align-items-center">
-        <p className="mt-4 max-w-4xl text-xl text-gray-500 font-bold lg:mx-auto">Your Team</p>
+      <div className="flex pt-10 w-full justify-center">
+        <p className="mt-4 max-w-4xl text-center text-xl text-gray-500 font-bold lg:mx-auto">Your Team</p>
       </div>
       <div className="flex justify-center w-full">
         <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
@@ -112,7 +103,6 @@ const Dashboard = (client) => {
 
       <div className="flex justify-center h-24">
         <div className="lg:text-center">
-          {createNew}
           <button
             type="submit"
             className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"

@@ -121,9 +121,18 @@ export const UPDATE_TEAM = gql`
 `;
 
 export const ADD_REPORT = gql`
-  mutation addReport($ownerId: String!) {
-    addReport(ownerId: $ownerId, state: "Draft") {
+  mutation addReport($owner: String!) {
+    addReport(owner: $owner, contributors: [$owner], title: "<p></p>", synopsis: "<p></p>", state: "Draft") {
       _id
+    }
+  }
+`;
+
+export const REMOVE_REPORT = gql`
+  mutation removeReport($reportId: String) {
+    removeReport(reportId: $reportId) {
+      _id
+      title
     }
   }
 `;
