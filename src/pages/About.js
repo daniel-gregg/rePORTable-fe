@@ -1,9 +1,6 @@
 import React from 'react';
 import '../components/Report/report.scss';
 import '../components/styles.scss';
-import Typical from 'react-typical';
-
-import HomePageEditor from '../components/Report/HomePageEditor';
 
 const Home = () => {
   return (

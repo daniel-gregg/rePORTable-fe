@@ -20,7 +20,7 @@ import { useParams } from 'react-router-dom';
 const TipTap = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { reportId } = useParams();
-  const { loading, error, data } = useQuery(QUERY_REPORT, {
+  const { loading, data } = useQuery(QUERY_REPORT, {
     // pass URL parameter
     variables: { id: reportId },
   });

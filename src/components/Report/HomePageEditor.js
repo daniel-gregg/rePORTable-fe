@@ -1,6 +1,5 @@
 import StarterKit from '@tiptap/starter-kit';
 import { useEditor, EditorContent } from '@tiptap/react';
-import { useMutation } from '@apollo/client';
 
 import MenuBar from '../MenuBar';
 import Image from '@tiptap/extension-image';

@@ -23,7 +23,7 @@ import { useParams } from 'react-router-dom';
 const ReportDashboard = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { reportId } = useParams();
-  const { loading, error, data } = useQuery(QUERY_NO_CONTENT, {
+  const { loading, data } = useQuery(QUERY_NO_CONTENT, {
     // pass URL parameter
     variables: { id: reportId },
   });

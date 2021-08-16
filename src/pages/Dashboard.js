@@ -1,7 +1,5 @@
 import { QUERY_USER, QUERY_USER_REPORTS } from '../api/queries';
 import { useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
 
@@ -12,7 +10,6 @@ import TeamSearch from '../components/Dashboard/TeamSearch';
 
 import '../components/Dashboard/biostyles.scss';
 import { ADD_REPORT } from '../api/mutations';
-import { createNew } from 'typescript';
 
 //import { useMutation } from '@apollo/client';
 //import { UPDATE_PROFILE } from '../api/mutations';
