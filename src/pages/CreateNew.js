@@ -1,7 +1,7 @@
 import '../components/Report/report.scss';
 import '../components/styles.scss';
 
-import { QUERY_NO_CONTENT, QUERY_REPORT } from '../api/queries';
+import { QUERY_NO_CONTENT } from '../api/queries';
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ import { useParams } from 'react-router-dom';
 const CreateDashboard = () => {
   // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { reportId } = useParams();
-  const { loading, error, data } = useQuery(QUERY_NO_CONTENT, {
+  const { loading, data } = useQuery(QUERY_NO_CONTENT, {
     // pass URL parameter
     variables: { id: reportId },
   });

@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import Parser from 'html-react-parser';
 import { REMOVE_REPORT } from '../../api/mutations';
 import { useMutation } from '@apollo/client';
-import { EventSeat } from '@material-ui/icons';
 
 const ReportsCard = ({ report }) => {
   //do some stuff with report here
