@@ -5,8 +5,6 @@ import { QUERY_REPORT } from '../api/queries';
 import { useQuery } from '@apollo/client';
 import Parser from 'html-react-parser';
 
-import TitleEditor from '../components/Report/TitleEditor';
-import SynopsisEditor from '../components/Report/SynopsisEditor';
 import ContentEditor from '../components/Report/ContentEditor';
 
 // Import the `useParams()` hook

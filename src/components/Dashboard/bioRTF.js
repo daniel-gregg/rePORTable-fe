@@ -23,11 +23,11 @@ const Bio = () => {
   const [updateBio] = useMutation(UPDATE_BIO);
   const editor = useEditor({
     extensions: [StarterKit, Image, Dropcursor, Underline],
-    content: JSON.parse(user.bio),
+    content: user.bio,
     onUpdate() {
       const update = () => {
-        const json = this.getJSON();
-        updateBio({ variables: { _id: user._id, bio: JSON.stringify(json) } });
+        const html = this.getHTML();
+        updateBio({ variables: { _id: user._id, bio: html } });
       };
       debounced?.clear();
       debounced = debounce(() => update(), 4000);

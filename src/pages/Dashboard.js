@@ -1,4 +1,4 @@
-import { QUERY_USER, QUERY_USER_REPORTS, QUERY_ALL_USERS } from '../api/queries';
+import { QUERY_USER, QUERY_USER_REPORTS } from '../api/queries';
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -87,7 +87,7 @@ const Dashboard = (client) => {
 
       <BioRtf profile={profile} />
 
-      <div className="flex pt-10 w-full">
+      <div className="flex pt-10 w-full align-items-center">
         <p className="mt-4 max-w-4xl text-xl text-gray-500 font-bold lg:mx-auto">Your Team</p>
       </div>
       <div className="flex justify-center w-full">

@@ -1,7 +1,7 @@
 import '../components/Report/report.scss';
 import '../components/styles.scss';
 
-import { QUERY_NO_CONTENT, QUERY_REPORT } from '../api/queries';
+import { QUERY_NO_CONTENT } from '../api/queries';
 import { useQuery } from '@apollo/client';
 import { Link } from 'react-router-dom';
 
@@ -37,6 +37,11 @@ const ReportDashboard = () => {
 
   return (
     <div>
+      <Link to={`/document/${report._id}`}>
+        <div className="sticky top-0 left-0 bg-white text-red-500 p-2 rounded hover:bg-green-200 m-2">
+          <p className="text-black text-3xl text-center">✏️ Edit</p>
+        </div>
+      </Link>
       <div>
         <h2 className="sectionHeader">Title</h2>
         <TitleEditor report={report} editable={true} />
@@ -58,10 +63,6 @@ const ReportDashboard = () => {
       </div>
 
       <ContributorSearch reportId={report._id} />
-
-      <Link to={`/document/${report._id}`}>
-        <div className="floatingButton">Edit</div>
-      </Link>
     </div>
   );
 };

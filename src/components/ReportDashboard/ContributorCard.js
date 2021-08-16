@@ -1,7 +1,6 @@
 import { useMutation } from '@apollo/client';
 import { REMOVE_CONTRIBUTOR } from '../../api/mutations';
 
-import { Link } from 'react-router-dom';
 // Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
 
@@ -15,9 +14,6 @@ const ContributorCard = (member) => {
   const deleteContributor = () => {
     console.log(member.member._id);
     removeContributor({ variables: { reportId: reportId, personId: member.member._id } });
-    // eslint-disable-next-line no-unused-expressions
-    //Delete the contributor
-    //console.log(id);
   };
 
   return (
