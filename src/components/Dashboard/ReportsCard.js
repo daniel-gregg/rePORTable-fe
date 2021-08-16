@@ -26,7 +26,7 @@ const ReportsCard = ({ report }) => {
       <button
         id={report._id}
         className="absolute top-0 right-0 bg-white text-red-500 p-2 rounded hover:bg-red-200 m-2"
-        onClick={deleteReport}
+        onClick={(event) => deleteReport(event)}
       >
         X
       </button>
