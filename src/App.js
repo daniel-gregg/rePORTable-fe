@@ -12,6 +12,7 @@ import { StoreProvider } from './state/GlobalState';
 import Dashboard from './pages/Dashboard';
 import Document from './pages/Document';
 import ReportDashboard from './pages/ReportDashboard';
+import About from './pages/About';
 
 import './index.css';
 
@@ -47,6 +48,7 @@ function App() {
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/dashboard" component={Dashboard} client={client} />
               <Route exact path="/create/:reportId" component={ReportDashboard} />
+              <Route exact path="/about" component={About} />
               <Route path="/document/:reportId" component={Document} />
               <Route path="/reportdashboard/:reportId" component={ReportDashboard} />
               <Route component={NoMatch} />
